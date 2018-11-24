@@ -25,10 +25,10 @@ les besoins de votre application.
 * Réfléchissez à l’option de recherche en ligne si nécessaire, en plus du mode Offline, qui
 devrait être disponible par défaut sur le corpus que vous aurez téléchargé.
 * L’application devra permettre une utilisation
-    ** En mode manuel : au lexicographe de l’utiliser pour définir lui/elle-même de nouvelles
+    * En mode manuel : au lexicographe de l’utiliser pour définir lui/elle-même de nouvelles
        entrées du dictionnaire historique, auquel cas les entrées définies seront sauvegardées
        comme finalisées.
-    ** En mode automatique : des mots seront pris de façon automatique à artir d’une ressource
+    * En mode automatique : des mots seront pris de façon automatique à artir d’une ressource
        lexicale (dictionnaire classique) et seront définies comme nouvelles entrées dans le
        dictionnaire historique de façon automatique en suivant les sens/utilisations du mot
        historiquement (comme expliqué dans le point (2) de la section « Motivation ».) Ce qui
