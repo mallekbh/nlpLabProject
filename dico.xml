@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<collection>
+    <entry>
+        <term>house</term>
+        <definition>
+            a building for human habitation,
+            especially one that consists of a ground floor and one or more upper storeys.
+        </definition>
+        <samples>
+            <sample epoch="" category="">
+                sample 1 - Dolore incididunt exercitation laboris voluptate culpa ea sit irure tempor esse.
+            </sample>
+            <sample epoch="" category="">
+                sample 2 - Duis quis proident aliqua ex nostrud tempor culpa voluptate laboris proident sunt irure in fugiat.
+            </sample>
+            <sample epoch="" category="">
+                sample 3 - Ex incididunt id dolore duis qui.
+            </sample>
+            <sample epoch="" category="">
+                sample 4 - Ut ad cupidatat incididunt in sit Lorem adipisicing.
+            </sample>
+            <sample epoch="" category="">
+                sample 5 - Exercitation reprehenderit duis exercitation laboris magna aute.
+            </sample>
+        </samples>
+    </entry>
+    <entry>
+        <term>dog</term>
+        <definition>
+            The domestic dog is a member of the genus Canis,
+            which forms part of the wolf-like canids, and is the most
+            widely abundant terrestrial carnivore.
+        </definition>
+        <samples>
+            <sample epoch="" category="">
+                sample 1 - Dolore incididunt exercitation laboris voluptate culpa ea sit irure tempor esse.
+            </sample>
+            <sample epoch="" category="">
+                sample 2 - Duis quis proident aliqua ex nostrud tempor culpa voluptate laboris proident sunt irure in fugiat.
+            </sample>
+            <sample epoch="" category="">
+                sample 3 - Ex incididunt id dolore duis qui.
+            </sample>
+            <sample epoch="" category="">
+                sample 4 - Ut ad cupidatat incididunt in sit Lorem adipisicing.
+            </sample>
+            <sample epoch="" category="">
+                sample 5 - Exercitation reprehenderit duis exercitation laboris magna aute.
+            </sample>
+        </samples>
+    </entry>
+    <entry>
+        <term>pizza</term>
+        <definition>
+            Pizza is a savory dish of Italian origin, consisting of a usually round,
+            flattened base of leavened wheat-based dough topped with tomatoes,
+            cheese, and various other ingredients baked at a high temperature,
+            traditionally in a wood-fired oven.
+        </definition>
+        <samples>
+            <sample epoch="" category="">
+                sample 1 - Dolore incididunt exercitation laboris voluptate culpa ea sit irure tempor esse.
+            </sample>
+            <sample epoch="" category="">
+                sample 2 - Duis quis proident aliqua ex nostrud tempor culpa voluptate laboris proident sunt irure in fugiat.
+            </sample>
+            <sample epoch="" category="">
+                sample 3 - Ex incididunt id dolore duis qui.
+            </sample>
+            <sample epoch="" category="">
+                sample 4 - Ut ad cupidatat incididunt in sit Lorem adipisicing.
+            </sample>
+            <sample epoch="" category="">
+                sample 5 - Exercitation reprehenderit duis exercitation laboris magna aute.
+            </sample>
+        </samples>
+    </entry>
+</collection>
