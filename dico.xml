@@ -1,11 +1,7 @@
-<?xml version="1.0"?>
 <collection>
     <entry>
         <term>house</term>
-        <definition>
-            a building for human habitation,
-            especially one that consists of a ground floor and one or more upper storeys.
-        </definition>
+        <definition>a place to live in</definition>
         <samples>
             <sample epoch="" category="">
                 sample 1 - Dolore incididunt exercitation laboris voluptate culpa ea sit irure tempor esse.
@@ -51,12 +47,7 @@
     </entry>
     <entry>
         <term>pizza</term>
-        <definition>
-            Pizza is a savory dish of Italian origin, consisting of a usually round,
-            flattened base of leavened wheat-based dough topped with tomatoes,
-            cheese, and various other ingredients baked at a high temperature,
-            traditionally in a wood-fired oven.
-        </definition>
+        <definition>a place to live in</definition>
         <samples>
             <sample epoch="" category="">
                 sample 1 - Dolore incididunt exercitation laboris voluptate culpa ea sit irure tempor esse.
