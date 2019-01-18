@@ -91,7 +91,6 @@ class Corpus:
                             #tokens = [stemmer.stemWord(token) for token in nltk.word_tokenize(line.text)]
                             tokens = stemmer.stemWords(nltk.word_tokenize(line.text))
                             if(stemmer.stemWord(term) in tokens):
-                                results.append({'cat':cat,'title':element.attrib['title'], 'author':element.attrib['author'], 'sample':line.text})
+                                results.append({'epoch':era, 'cat':cat,'title':element.attrib['title'], 'author':element.attrib['author'], 'sample':line.text})
         return results
 
-   

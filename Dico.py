@@ -6,12 +6,16 @@ import nltk
 from Corpus import Corpus
 
 
+
 class Dico:
     def __init__(self,DicoPath, CorpusPath):
         '''  '''
         self.tree = xml.parse(DicoPath)
         self.root = self.tree.getroot()
         self.corpus = Corpus(CorpusPath)
+        self.periods = {"1pre_islamic_era":"العصر الجاهلي", "2islamAndAmaoui_era":"العصر الأموي", "3Abbasi_era":"العصر العباسي", "4modern_era":"العصر الحديث"}
+        self.types = {"poem":"الشعر", "prose":"النثر"}
+        
     
     def getSamples(self,term):
         """ returns list of samples for the provided term, empty list if term doesnt exist """
@@ -25,7 +29,7 @@ class Dico:
 
     def getDefinition(self,term): 
         """ returns a definition if the term exists, None otherwise """
-        if(sleexists(self,term)):
+        if(exists(self,term)):
             definition = ""
             for child in self.root:
                 if(term == child.find("term").text):
@@ -47,7 +51,7 @@ class Dico:
     def addNewEntry(self,term):
         """ returns a boolean: creates a new entry in the dico file and populate it with relative info """
 
-        if(not self.exists(slef,term)):
+        if(not self.exists(term)):
             text = self.findDescription(term)
             entry = xml.SubElement(self.root,'entry', {'state':'final'})
             element= xml.SubElement(entry, 'term', {})
@@ -55,27 +59,34 @@ class Dico:
             definition = xml.SubElement(entry, 'definition', {})
             definition.text = text
             samples = xml.SubElement(entry, 'samples', {})
-            found_samples = self.corpus.findSamples(term)
+            found_samples = self.corpus.createSamples(term)
             for found_sample in found_samples :
-                sample = xml.SubElement(samples, 'sample', {'epoch':found_sample.era, 'category':found_sample.cat, 'title':found_sample.title, 'author':found_sample.author})
-                sample.text = found_sample.sample
+                print(found_sample)
+                sample = xml.SubElement(samples, 'sample', {'epoch':found_sample["epoch"], 'category':found_sample["cat"], 'title':found_sample['title'], 'author':found_sample["author"]})
+                sample.text = found_sample["sample"]
         self.tree.write('dico.xml',encoding="utf-8")
     
     def removeEntry(self,term):
         return False
+
+    def getEntry(self,term):
+        element = None
+        for child in self.root:
+            if term == child.find("term").text:
+                element = child
+        return element
 
     def updateEntry(self,term,definition):
         element = None
         for child in self.root:
             if term == child.find("term").text:
                 element = child
-                print(element)
         element.find("definition").text = definition
         self.tree.write('dico.xml',encoding="utf-8")
 
     def exists(self,term):
         """ return boolean: true if term exists in dico file, false otherwise """
-        for child in root:
+        for child in self.root:
             if term == child.find("term").text:
                 return True
         return False
@@ -96,6 +107,39 @@ class Dico:
 
     def addEntry(self,entry):
         pass
+    
+    def FindEntry(self,entry,periodFilter,typeFilter):
+        """ return samples for requested entry following search filters """
+        
+        result = {"definition":"", "samples":""}
+        element = self.getEntry(entry)
+        result['definition'] = element.find("definition").text
+        samples = element.find("samples").findall("sample")
+        output = open("output.txt","w")
+        if(len(periodFilter) == 0):
+            if(len(typeFilter) == 0):
+                for sample in samples:
+                    result['samples'] += "العنوان: "+sample.attrib["title"]+"\t"+"الكاتب: "+sample.attrib["author"]+"\t"+"العصر: "+self.periods[sample.attrib["epoch"]]+"\t"+"النوع: "+self.types[sample.attrib['category']]+"\n\n"
+                    result["samples"] += result["samples"]+sample.text+"\n\n\n"     
+            else:
+                for sample in samples:
+                    if(sample.attrib['type'] in typeFilter):
+                        result['samples'] += "العنوان:"+sample.attrib["title"]+"\t"+"الكاتب:"+sample.attrib["author"]+"\t"+"العصر:"+self.periods[sample.attrib["epoch"]]+"النوع:"+self.types[sample.attrib['category']]+"\n\n"
+                        result["samples"] += result["samples"]+sample.text+"\n\n\n"
+        else:
+            if(len(typeFilter) == 0):
+                for sample in samples:
+                    if(sample.attrib['epoch'] in periodFilter):
+                        result['samples'] += "العنوان:"+sample.attrib["title"]+"\t"+"الكاتب:"+sample.attrib["author"]+"\t"+"العصر:"+self.periods[sample.attrib["epoch"]]+"النوع:"+self.types[sample.attrib['category']]+"\n\n"
+                        result["samples"] += result["samples"]+sample.text+"\n\n\n"
+                        output.write(result["samples"])
+            else:
+                for sample in samples:
+                    if(sample.attrib['epoch'] in periodFilter and sample.attrib["type"] in typeFilter):
+                        result['samples'] += "العنوان:"+sample.attrib["title"]+"\t"+"الكاتب:"+sample.attrib["author"]+"\t"+"العصر:"+self.periods[sample.attrib["epoch"]]+"النوع:"+self.types[sample.attrib['category']]+"\n\n"
+                        result["samples"] += result["samples"]+sample.text+"\n\n\n"
+        output.close()
+        return result
 
 dico = Dico("dico.xml","corpus/")
-dico.updateEntry("house","a place to live in")
+dico.FindEntry("الفراش",["1pre_islamic_era"],[])
